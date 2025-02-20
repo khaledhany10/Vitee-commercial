@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './App.css'
 import Layout from './Components/Layout/Layout'
 import Register from './Components/Rigester/Rigester'
@@ -23,33 +23,28 @@ import Wishlist from './Components/Wishlist/Wishlist'
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        { path: '', element: <ProtectRoute><Home /></ProtectRoute> },
-        { path: 'Register', element: <Register /> },
-        { path: 'Login', element: <Login /> },
-        { path: 'forgetmypassword', element: <Forgetmypassword /> },
-        { path: 'Verifycode', element: <Verifycode /> },
-        { path: 'ResetPassword', element: <ResetPassword /> },
-        { path: 'Products', element: <ProtectRoute><Products /></ProtectRoute> },
-        { path: 'WishList', element: <ProtectRoute><Wishlist /></ProtectRoute> },
-        { path: 'Brand', element: <ProtectRoute><Brands /></ProtectRoute> },
-        { path: 'payment', element: <ProtectRoute><Payment /></ProtectRoute> },
-        { path: 'ProductDetails/:id', element: <ProtectRoute><ProductDetails /></ProtectRoute> },
-        { path: 'Cart', element: <ProtectRoute><Cart /></ProtectRoute> },
-        { path: 'Categories', element: <ProtectRoute><Categories /></ProtectRoute> },
-        { path: '*', element: <Notfound /> }
-      ]
-    }
-  ],
+const router = createHashRouter([
   {
-    basename: "/Vitee-commercial", 
+    path: '/',
+    element: <Layout />,
+    children: [
+      { path: '', element: <ProtectRoute><Home /></ProtectRoute> },
+      { path: 'Register', element: <Register /> },
+      { path: 'Login', element: <Login /> },
+      { path: 'forgetmypassword', element: <Forgetmypassword /> },
+      { path: 'Verifycode', element: <Verifycode /> },
+      { path: 'ResetPassword', element: <ResetPassword /> },
+      { path: 'Products', element: <ProtectRoute><Products /></ProtectRoute> },
+      { path: 'WishList', element: <ProtectRoute><Wishlist /></ProtectRoute> },
+      { path: 'Brand', element: <ProtectRoute><Brands /></ProtectRoute> },
+      { path: 'payment', element: <ProtectRoute><Payment /></ProtectRoute> },
+      { path: 'ProductDetails/:id', element: <ProtectRoute><ProductDetails /></ProtectRoute> },
+      { path: 'Cart', element: <ProtectRoute><Cart /></ProtectRoute> },
+      { path: 'Categories', element: <ProtectRoute><Categories /></ProtectRoute> },
+      { path: '*', element: <Notfound /> }
+    ]
   }
-);
+]);
 
 
 

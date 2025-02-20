@@ -1,19 +1,11 @@
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { authContext } from '../context/AuthContext';
 
-export default function ProtectRoute({children}) {
-  if(localStorage.getItem("token") == null){
-    return<Navigate to='/login'/>
-  }
-  return (<>
-  
-  
-  
-  {children}
-  
-  
-  
-  
-  
-  </>
-  )
-}
+const ProtectRoute = ({ children }) => {
+  const { token } = useContext(authContext); 
+
+  return token ? children : <Navigate to="/Login" />;
+};
+
+export default ProtectRoute;
