@@ -31,10 +31,8 @@ export default function CartContextProvider({children}) {
 
   function revomeWIshlist(productId){
     axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`,{
-    headers:{
-      token:localStorage.getItem("token")
-    }
-  })
+      headers:localStorage.getItem("token")
+    })
   .then( (resp)=> {
     setRemoveitem(resp.data.data)
     window.location.reload()
